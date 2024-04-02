@@ -1,6 +1,6 @@
 import React,{useState} from 'react'
 
-export default function Textform() {
+export default function Textform(props) {
   // default textarea
   const [text, setText] = useState("Enter Text Here");
 
@@ -69,10 +69,10 @@ export default function Textform() {
   }
 
   return (
-    <div style={mystyle} className="mb-3" >
+    <div style={mystyle} className={ `mb-3 bg-${props.mode} text-${props.mode==='dark'?'light':'dark'}`}  >
         <div className="container" >
             <label htmlFor="exampleFormControlTextarea1" className="form-label">Your Text</label>
-            <textarea className="form-control my-3" value={text} onChange={handleOnChange} id="exampleFormControlTextarea1" rows="8" style={mystyle}></textarea>
+            <textarea className={`form-control my-3 bg-${props.mode} text-${props.mode==='dark'?'light':'dark'}`} value={text} onChange={handleOnChange} id="exampleFormControlTextarea1" rows="8" style={mystyle}></textarea>
             <button className="btn btn-primary m-2" onClick={handleUpClick}>Convert to Uppercase</button>
             <button className="btn btn-primary m-2" onClick={handleLowClick}>Convert to Lowercase</button>
             <button className="btn btn-primary m-2" onClick={handleClear}>Clear Text</button>
@@ -86,7 +86,9 @@ export default function Textform() {
         </div>
         <div className='container my-3'>
           <h2>Text Preview</h2>
-          <p>{text}</p>
+          {/* <p>{if (text.length>0)?${text}:"Enter TExt";}</p> */}
+          <p>{text.length > 0 ? text : "Please Enter Your Text to preview"}</p>
+
         </div>
     </div>
   ) 
