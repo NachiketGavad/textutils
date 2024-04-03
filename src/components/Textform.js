@@ -86,14 +86,14 @@ export default function Textform(props) {
             <button className="btn btn-primary m-2" onClick={handleRemoveextra}>Remove Extra Space</button>
         </div> 
         <div className='container my-3'>
-          <h2>Your Text Summary</h2>
-          <p>{text.split(" ").length} Words and {text.length} Characters</p>
+          <h3>Your Text Summary</h3>
+          <p>{text.split(" ").filter((element)=>{return element.length!==0}).length} Words and {text.length} Characters</p>
+          <p>{0.01 * text.split(" ").filter((element)=>{return element.length!==0}).length} Minutes Read.</p>
         </div>
         <div className='container my-3'>
-          <h2>Text Preview</h2>
+          <h3>Text Preview</h3>
           {/* <p>{if (text.length>0)?${text}:"Enter TExt";}</p> */}
           <p>{text.length > 0 ? text : "Please Enter Your Text to preview"}</p>
-
         </div>
     </div>
   ) 

@@ -50,7 +50,7 @@ function App() {
     // passing props to components is important step
     <>
       <Navbar title="My Practice react app" aboutText="about" mode={mode} togglebtn={togglebtn} toggleMode={toggleMode} showAlert={showAlert}></Navbar>
-      <Alert alert={alert} showAlert={showAlert}/>
+      <Alert alert={alert} showAlert={showAlert} mode={mode}/>
       <Textform mode={mode} togglebtn={togglebtn} toggleMode={toggleMode} showAlert={showAlert}></Textform>
     </>
   );
