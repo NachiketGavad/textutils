@@ -2,7 +2,9 @@ import { useState } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
 import Textform from './components/Textform';
+import StringDivideUsers from './components/Stringdivideusers';
 import Alert from './components/Alert';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   // switching modes from App
@@ -48,11 +50,14 @@ function App() {
   
   return (
     // passing props to components is important step
-    <>
-      <Navbar title="My Practice react app" aboutText="about" mode={mode} togglebtn={togglebtn} toggleMode={toggleMode} showAlert={showAlert}></Navbar>
+    <Router>        
+      <Navbar title="Text-Utils react app" aboutText="String Divide Users API" mode={mode} togglebtn={togglebtn} toggleMode={toggleMode} showAlert={showAlert}></Navbar>
       <Alert alert={alert} showAlert={showAlert} mode={mode}/>
-      <Textform mode={mode} togglebtn={togglebtn} toggleMode={toggleMode} showAlert={showAlert}></Textform>
-    </>
+      <Routes>
+          <Route path='/' element={<Textform key="general"  mode={mode} togglebtn={togglebtn} toggleMode={toggleMode} showAlert={showAlert}/>} />
+          <Route path='/StringDivideUsers' element={<StringDivideUsers key="stringdivideapi"  mode={mode} togglebtn={togglebtn} toggleMode={toggleMode} showAlert={showAlert}/>} />
+      </Routes>
+    </Router>
   );
 }
 
